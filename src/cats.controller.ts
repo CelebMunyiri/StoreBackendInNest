@@ -1,5 +1,6 @@
-import { Controller, Get, Req, Post, HttpCode } from '@nestjs/common';
+import { Controller, Get, Req, Res, Post, HttpCode } from '@nestjs/common';
 import { Request } from 'express';
+import { Response } from 'express';
 
 @Controller('cats')
 export class CatsController {
@@ -12,8 +13,8 @@ export class CatsController {
 @Controller('cats/oneCat')
 export class OneCatController {
   @Get()
-  findOne(): number {
-    return 1;
+  findOne(@Res() response) {
+    response.status(202).send('response sent succesfully');
   }
 }
 
@@ -22,6 +23,7 @@ export class AddCatController {
   @Post()
   @HttpCode(202)
   create(): string {
+    
     return 'this action adds a new cat';
   }
 }
