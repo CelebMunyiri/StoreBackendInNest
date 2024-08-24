@@ -4,7 +4,7 @@ import { Request } from 'express';
 @Controller('cats')
 export class CatsController {
   @Get()
-  findAll(@Req() request: Request): string {
+  findAll(): string {
     return 'This action returns all cats here';
   }
 }
