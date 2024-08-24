@@ -1,6 +1,4 @@
-import { Controller, Get, Req, Res, Post, HttpCode } from '@nestjs/common';
-import { Request } from 'express';
-import { Response } from 'express';
+import { Controller, Get, Res, Post, HttpCode } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
@@ -23,7 +21,6 @@ export class AddCatController {
   @Post()
   @HttpCode(202)
   create(): string {
-    
     return 'this action adds a new cat';
   }
 }
