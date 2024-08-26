@@ -12,4 +12,8 @@ export class CatsService {
   findAll(): Cat[] {
     return this.cats;
   }
+
+  findOne(i: number): Cat {
+    return this.cats[i];
+  }
 }

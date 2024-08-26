@@ -18,3 +18,11 @@ export class CatsController {
     return this.catsService.findAll();
   }
 }
+
+@Controller('cats/one')
+export class OneCatController {
+  @Get()
+  async findOne(): Cat {
+    return this.catsService.findOne();
+  }
+}
