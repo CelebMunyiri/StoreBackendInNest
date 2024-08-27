@@ -2,6 +2,7 @@ import { Controller, Get, Body, Post, Res } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 import { CreateCatDto } from './Dto/createCatDto';
+import { Response } from 'express';
 
 @Controller('cats')
 export class CatsController {
@@ -13,9 +14,14 @@ export class CatsController {
     response.status(200).send({ message: 'Cat added as success' });
   }
 
+  //   @Get()
+  //   async findAll(): Promise<Cat[]> {
+  //     return this.catsService.findAll();
+  //   }
+
   @Get()
-  async findAll(): Promise<Cat[]> {
-    return this.catsService.findAll();
+  async findAll(@Res() res: Response) {
+    res.status(200).send(this.catsService.findAll());
   }
 }
 
