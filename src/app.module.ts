@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
-impor;
+import { OneCatController } from './cats.controller';
 
 @Module({
   imports: [],
