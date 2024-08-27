@@ -24,3 +24,11 @@ export class CatsController {
     res.status(200).send(this.catsService.findAll());
   }
 }
+
+@Controller('cats/one')
+export class OneCatController {
+  @Get()
+  async findOne(): Cat {
+    return this.catsService.findOne();
+  }
+}
