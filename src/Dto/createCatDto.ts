@@ -10,3 +10,14 @@ export class CreateCatDto {
   @IsString()
   readonly breed: string;
 }
+
+export class UpdateCatDto {
+  @IsString()
+  readonly name: string;
+
+  @IsInt()
+  readonly age: number;
+
+  @IsString()
+  readonly breed: string;
+}

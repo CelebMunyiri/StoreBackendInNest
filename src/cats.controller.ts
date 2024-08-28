@@ -1,7 +1,7 @@
 import { Controller, Get, Body, Post, Res } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
-import { CreateCatDto } from './Dto/createCatDto';
+import { CreateCatDto,UpdateCatDto } from './Dto/createCatDto';
 import { Response } from 'express';
 
 @Controller('cats')
@@ -27,8 +27,14 @@ export class CatsController {
 
 @Controller('cats/one')
 export class OneCatController {
+  constructor(private catsService: CatsService) {}
   @Get()
-  async findOne(): Cat {
-    return this.catsService.findOne();
+  async findOne(i: number) {
+    return this.catsService.findOne(i);
+  }
+
+  @Put(':id')
+  async updateOne(@Param('id') id: number, @Body() updatecatDto: UpdateCatDto) {
+    return CatsService.updateOne(id, updatecatDto);
   }
 }
