@@ -18,10 +18,7 @@ export class CatsService {
   }
 
   updateOne(id: number): Cat[]{
-    if(id < this.cats.length){
       this.cats[id] = {...this.cats[id], age: this.cats[id].age + 1 };
       return this.cats;
-    }
-    return this.cats;
   }
 }
