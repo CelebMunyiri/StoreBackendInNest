@@ -1,4 +1,4 @@
-import { IsString, IsInt } from 'class-validator';
+import { IsString, IsInt, IsOptional } from 'class-validator';
 
 export class CreateCatDto {
   @IsString()
@@ -9,4 +9,18 @@ export class CreateCatDto {
 
   @IsString()
   readonly breed: string;
+}
+
+export class UpdateCatDto {
+  @IsOptional()
+  @IsString()
+  name?: string;
+
+  @IsOptional()
+  @IsInt()
+  age?: number;
+
+  @IsOptional()
+  @IsString()
+  breed?: string;
 }
