@@ -1,6 +1,6 @@
 import { Controller, Get, Body, Post, Res, Put, Param } from '@nestjs/common';
 import { CatsService } from './cats.service';
-import { Cat } from './interfaces/cat.interface';
+
 import { CreateCatDto, UpdateCatDto } from './Dto/createCatDto';
 import { Response } from 'express';
 
@@ -35,6 +35,6 @@ export class OneCatController {
 
   @Put(':id')
   updateOneCat(@Param('id') id: number, @Body() updatecatDto: UpdateCatDto) {
-    return CatsService.updateOne(id, updatecatDto);
+    return this.catsService.updateOne(id, updatecatDto);
   }
 }

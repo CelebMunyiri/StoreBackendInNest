@@ -1,5 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Cat } from './interfaces/cat.interface';
+import { UpdateCatDto } from './Dto/createCatDto';
 
 @Injectable()
 export class CatsService {
@@ -17,14 +18,14 @@ export class CatsService {
     return this.cats[i];
   }
 
-  updateOne(id: number): Cat[] {
-    // Check if the id is valid (within array bounds)
-    if (id < 0 || id >= this.cats.length) {
-      throw new NotFoundException(`Cat with id ${id} not found`);
+  updateOne(id: number, updatecatDto: UpdateCatDto): Cat {
+    const existingCat = this.cats[id];
+
+    if (existingCat) {
+      this.cats[id] = { ...existingCat, ...updatecatDto };
+      return this.cats[id];
     }
 
-    // Safely update the cat's age
-    this.cats[id] = { ...this.cats[id], age: this.cats[id].age + 1 };
-    return this.cats;
+    return null;
   }
 }
